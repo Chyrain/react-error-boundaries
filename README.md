@@ -51,10 +51,11 @@ Use as class decorator:
 
 ```js
 // import first
+import React from 'react'
 import { errorHandlerDecorator } from 'react-error-boundaries'
 
 @errorHandlerDecorator
-export default class FilterableProductTable extends React.PureComponent {
+export default class YourComponent extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -69,22 +70,35 @@ export default class FilterableProductTable extends React.PureComponent {
 }
 ```
 
-Define your errorCallback function and FallbackComponent:
+By using it as a HOC. You can also customize the errorCallback function and FallbackComponent for better appearance:
 
 ```js
 // import first
 import { withErrorHandler } from 'react-error-boundaries'
 
-const yourErrorHandler = withErrorHandler(
+const ComponentWithErrorBoundary = withErrorHandler(
   errorCallback,    // report Error to service
-  FallbackComponent // Component to display errors
+  FallbackComponent, // Component to display errors
+  YourComponent // Component to decorate
 )
+
+// or customize as a ES7 decorator
+const yourErrorHandlerDecorator = withErrorHandler(
+  errorCallback,    // report Error to service
+  FallbackComponent, // Component to display errors
+)
+
+@yourErrorHandlerDecorator
+class YourComponent extends React.component {
+    //......
+}
+
 
 ```
 
 ## Try example
 
-Input 'i' in search input and error will throw.
+Input `i` in search input and error will throw.
 
 ```shell
 # run example, auto open browser and enable hot loader
