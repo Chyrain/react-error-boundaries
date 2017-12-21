@@ -4,19 +4,21 @@
 [![downloads](https://img.shields.io/npm/dm/react-error-boundaries.svg?style=flat-square)](http://npm-stat.com/charts.html?package=react-popconfirm&from=2017-04-07)
 [![MIT License](https://img.shields.io/npm/l/react-error-boundaries.svg?style=flat-square)](http://opensource.org/licenses/MIT)
 
+![react-error-boundaries](https://raw.githubusercontent.com/Chyrain/MDPictures/master/res/react_error_boundaries.png)
+
 Base on React 16.2.0, babel required:
 
 ```json
 {
-	"presets": [
-		"stage-3",
-		"react"
-	],
-	"plugins": [
-		"transform-decorators-legacy",
-		"transform-class-properties",
-		"transform-object-rest-spread"
-	]
+    "presets": [
+        "stage-3",
+        "react"
+    ],
+    "plugins": [
+        "transform-decorators-legacy",
+        "transform-class-properties",
+        "transform-object-rest-spread"
+    ]
 }
 ```
 
@@ -77,6 +79,8 @@ const yourErrorHandler = withErrorHandler(
 ```
 
 ## Try example
+
+Input 'i' in search input and error will throw.
 
 ```shell
 # run example, auto open browser and enable hot loader
