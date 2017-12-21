@@ -88,12 +88,8 @@ Input 'i' in search input and error will throw.
 
 ```shell
 # run example, auto open browser and enable hot loader
-cd example
 npm install
 npm start
-
-# build
-npm run build
 ```
 
 ## License
