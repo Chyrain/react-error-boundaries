@@ -1,0 +1,44 @@
+{
+  "name": "react-error-boundaries",
+  "version": "0.1.1",
+  "description": "React HOC for error boundaries.",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --progress --colors",
+    "start": "webpack-dev-server --config webpack.dev.config.js --progress --colors --hot --inline"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Chyrain/react-error-boundary.git"
+  },
+  "keywords": [
+    "react",
+    "HOC",
+    "error",
+    "boundary"
+  ],
+  "author": "Chyrain. <chyrain_v5kf@qq.com> (https://chyrain.github.io/)",
+  "bugs": {
+    "url": "https://github.com/Chyrain/react-error-boundary/issues"
+  },
+  "homepage": "https://github.com/Chyrain/react-error-boundary#readme",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-3": "^6.24.1",
+    "html-webpack-plugin": "^2.30.1",
+    "open-browser-webpack-plugin": "0.0.5",
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.9.7"
+  }
+}
