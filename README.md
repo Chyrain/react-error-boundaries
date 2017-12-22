@@ -28,7 +28,7 @@ Intro:
 - ErrorBoundary: React container component to handler error
 - withErrorHandler: React HOC to customize the errorCallback function and FallbackComponent
 - errorHandlerDecorator: By this, you can use error boundary as ES7 decorator
-- FallbackView: A react fallback component, show when error occur. props: { error: Objec, errorInfo: Object, closeErrorModal: Function }
+- FallbackView: The default fallback component, show when error occur. props: { error: Objec, errorInfo: Object, closeErrorModal: Function }
 
 Use as a component container:
 
@@ -104,10 +104,10 @@ function onError(error, errorInfo, props) {
 ReactDOM.render(<YourComponent onError={onError} />, document.getElementById('root'));
 ```
 
-In HOC way, you can customize the errorCallback function and FallbackComponent for better appearance:
+In HOC way, you can also customize the FallbackComponent for better appearance:
 
 ```js
-// import first
+// import first, FallbackView is default Fallback Component
 import { withErrorHandler, FallbackView } from 'react-error-boundaries'
 
 // customize the errorCallback
@@ -119,15 +119,15 @@ function onError(error, errorInfo, props) {
 /* example 1 */
 
 const ComponentWithErrorBoundary = withErrorHandler(
-  FallbackView,   // Fallback Component to display errors
-  YourComponent   // Component to decorate
+  YourFallbackComponent, // Fallback Component to display errors, to replace default FallbackView
+  YourComponent          // Component to decorate
 );
 ReactDOM.render(<ComponentWithErrorBoundary onError={onError} />, document.getElementById('root'));
 
 /* example 2 */
 // customize as a ES7 decorator
 const yourErrorHandlerDecorator = withErrorHandler(
-  FallbackView    // Fallback Component to display errors
+  YourFallbackComponent // Fallback Component to display errors, to replace default FallbackView
 );
 
 @yourErrorHandlerDecorator
@@ -135,7 +135,6 @@ class YourComponent extends React.component {
     //......
 }
 ReactDOM.render(<YourComponent onError={onError} />, document.getElementById('root'));
-
 ```
 
 ## Try example
