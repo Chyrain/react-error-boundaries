@@ -1,5 +1,6 @@
 import React from 'react'
 import { errorHandlerDecorator } from 'react-error-boundaries'
+// import { errorHandlerDecorator } from '../../src/ErrorHandler'
 
 class ProductCategoryRow extends React.PureComponent {
   render() {
@@ -94,6 +95,10 @@ class SearchBar extends React.PureComponent {
   }
 }
 
+function onError(error, errorInfo, props) {
+  console.log('FilterableProductTable.onError:', error, errorInfo, props);
+}
+
 @errorHandlerDecorator // 类或者类中的函数才可以使用装饰器
 export default class FilterableProductTable extends React.PureComponent {
   constructor(props) {
@@ -149,3 +154,5 @@ var PRODUCTS = [
 ];
 
 export { PRODUCTS };
+// or not use @decorator
+// export default errorHandlerDecorator(FilterableProductTable)

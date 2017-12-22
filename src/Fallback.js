@@ -36,18 +36,6 @@ const detailSty = {
     WebkitHighlight: 'none'
 };
 
-function replacer(key, value) {
-    if (typeof value === 'function') {
-        return `function ${value.name}() {...}`
-    }
-
-    return value
-}
-
-function stringify(value) {
-    return JSON.stringify(value, replacer, 2)
-}
-
 export default function Fallback(props) {
     const { error, errorInfo, closeErrorModal } = props;
     

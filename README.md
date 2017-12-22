@@ -10,21 +10,7 @@ A reusable React error boundaries component.
 
 ![react-error-boundaries](https://raw.githubusercontent.com/Chyrain/MDPictures/master/res/react_error_boundaries.png)
 
-Base on React 16.2.0, babel required:
-
-```json
-{
-    "presets": [
-        "stage-3",
-        "react"
-    ],
-    "plugins": [
-        "transform-decorators-legacy",
-        "transform-class-properties",
-        "transform-object-rest-spread"
-    ]
-}
-```
+Based on React 16.2.0.
 
 ## Usage
 
@@ -42,7 +28,7 @@ Intro:
 - ErrorBoundary: React container component to handler error
 - withErrorHandler: React HOC to customize the errorCallback function and FallbackComponent
 - errorHandlerDecorator: By this, you can use error boundary as ES7 decorator
-- FallbackView: A react fallback component, show when error occur
+- FallbackView: A react fallback component, show when error occur. props: { error: Objec, errorInfo: Object, closeErrorModal: Function }
 
 Use as a component container:
 
@@ -59,7 +45,29 @@ const App = () => {
     </ErrorBoundary>
     );
 }
+ReactDOM.render(<App />, document.getElementById('root'));
+```
 
+And you can handle errors by providing an onError callback:
+
+```js
+// import first
+import React from 'react'
+import ReactDOM from 'react-dom'
+import ErrorBoundary from 'react-error-boundaries'
+
+function onError(error, errorInfo, props) {
+  // you can report Error to service here
+  console.error('onError:', error.message);
+}
+
+const App = () => {
+    return (
+    <ErrorBoundary onError={onError}>
+        <YourComponents />
+    </ErrorBoundary>
+    );
+}
 ReactDOM.render(<App />, document.getElementById('root'));
 ```
 
@@ -70,8 +78,9 @@ Use as class decorator:
 import React from 'react'
 import { errorHandlerDecorator } from 'react-error-boundaries'
 
+// ES7 decorator, need babel plugin "transform-decorators-legacy"
 @errorHandlerDecorator
-export default class YourComponent extends React.Component {
+class YourComponent extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -84,30 +93,49 @@ export default class YourComponent extends React.Component {
     );
   }
 }
+// or not use @decorator just like this:
+// export default errorHandlerDecorator(YourComponent)
+
+function onError(error, errorInfo, props) {
+  // you can report Error to service here
+  console.log('onError:', error.message);
+}
+
+ReactDOM.render(<YourComponent onError={onError} />, document.getElementById('root'));
 ```
 
 In HOC way, you can customize the errorCallback function and FallbackComponent for better appearance:
 
 ```js
 // import first
-import { withErrorHandler } from 'react-error-boundaries'
+import { withErrorHandler, FallbackView } from 'react-error-boundaries'
+
+// customize the errorCallback
+function onError(error, errorInfo, props) {
+  // you can report Error to service here
+  console.error('onError:', error.message);
+}
+
+/* example 1 */
 
 const ComponentWithErrorBoundary = withErrorHandler(
-  errorCallback,    // report Error to service
-  FallbackComponent, // Component to display errors
-  YourComponent // Component to decorate
-)
+  FallbackView,   // Fallback Component to display errors
+  YourComponent   // Component to decorate
+);
+ReactDOM.render(<ComponentWithErrorBoundary onError={onError} />, document.getElementById('root'));
 
-// or customize as a ES7 decorator
+/* example 2 */
+// customize as a ES7 decorator
 const yourErrorHandlerDecorator = withErrorHandler(
-  errorCallback,    // report Error to service
-  FallbackComponent, // Component to display errors
-)
+  FallbackView    // Fallback Component to display errors
+);
 
 @yourErrorHandlerDecorator
 class YourComponent extends React.component {
     //......
 }
+ReactDOM.render(<YourComponent onError={onError} />, document.getElementById('root'));
+
 ```
 
 ## Try example
@@ -116,12 +144,8 @@ Input `i` in search input and error will throw.
 
 ```shell
 # run example, auto open browser and enable hot loader
-cd example
 npm install
 npm start
-
-# build
-npm run build
 ```
 
 ## License
