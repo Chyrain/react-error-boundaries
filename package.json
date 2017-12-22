@@ -1,6 +1,6 @@
 {
   "name": "react-error-boundaries",
-  "version": "0.1.8",
+  "version": "1.0.0",
   "description": "React HOC for error boundaries.",
   "main": "lib/index.js",
   "scripts": {
