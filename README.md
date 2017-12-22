@@ -28,6 +28,22 @@ Base on React 16.2.0, babel required:
 
 ## Usage
 
+Import:
+
+```js
+// import all
+import { ErrorBoundary, withErrorHandler, errorHandlerDecorator, FallbackView } from 'react-error-boundaries'
+// import default ErrorBoundary
+import ErrorBoundary from 'react-error-boundaries'
+```
+
+Intro:
+
+- ErrorBoundary: React container component to handler error
+- withErrorHandler: React HOC to customize the errorCallback function and FallbackComponent
+- errorHandlerDecorator: By this, you can use error boundary as ES7 decorator
+- FallbackView: A react fallback component, show when error occur
+
 Use as a component container:
 
 ```js
@@ -70,7 +86,7 @@ export default class YourComponent extends React.Component {
 }
 ```
 
-By using it as a HOC. You can also customize the errorCallback function and FallbackComponent for better appearance:
+In HOC way, you can customize the errorCallback function and FallbackComponent for better appearance:
 
 ```js
 // import first
@@ -92,8 +108,6 @@ const yourErrorHandlerDecorator = withErrorHandler(
 class YourComponent extends React.component {
     //......
 }
-
-
 ```
 
 ## Try example
@@ -102,8 +116,12 @@ Input `i` in search input and error will throw.
 
 ```shell
 # run example, auto open browser and enable hot loader
+cd example
 npm install
 npm start
+
+# build
+npm run build
 ```
 
 ## License
