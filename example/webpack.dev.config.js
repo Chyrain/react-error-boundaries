@@ -6,7 +6,6 @@ const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 
 const SRC_PATH = path.resolve(__dirname, 'src');
 const BUILD_PATH = path.resolve(__dirname, 'build');
-const EXAMPLE_PATH = path.resolve(__dirname, 'example');
 
 module.exports = {
     // Source Maps("source-map|cheap-module-source-map|eval-source-map|cheap-module-eval-source-map")
@@ -14,7 +13,7 @@ module.exports = {
     entry: {
         webpack: ['webpack-dev-server/client?http://0.0.0.0:8080',
 				  'webpack/hot/only-dev-server'],
-        index: path.resolve(EXAMPLE_PATH, 'index.jsx')
+        index: path.resolve(SRC_PATH, 'index.jsx')
     },
     output: {
         path: BUILD_PATH,
@@ -28,8 +27,7 @@ module.exports = {
             {
                 test: /\.js[x]?$/,
                 include: [
-                    SRC_PATH,
-                    EXAMPLE_PATH
+                    SRC_PATH
                 ],
                 loader: 'babel-loader'
             }
@@ -44,7 +42,7 @@ module.exports = {
         new OpenBrowserPlugin({url: ('http://localhost:8080')}),
         new webpack.BannerPlugin('Copyright © 2017 by Chyrain. All rights reserved.'),
         new HtmlwebpackPlugin({
-			template: path.resolve(EXAMPLE_PATH, './index.html'),
+			template: path.resolve(__dirname, './index.html'),
 			filename: 'index.html',
 			inject: 'body'
 		})

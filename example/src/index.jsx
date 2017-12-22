@@ -2,13 +2,13 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 import FilterableProductTable, { PRODUCTS } from './FilterableProductTable'
-import ErrorBoundary from '../src/ErrorHandler'
+// import ErrorBoundary from 'react-error-boundaries'
 
 const App = () => {
     return (
-    <ErrorBoundary>
+    <div>
         <FilterableProductTable products={PRODUCTS} />
-    </ErrorBoundary>
+    </div>
     );
 }
 

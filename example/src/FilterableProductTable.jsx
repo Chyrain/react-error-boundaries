@@ -1,5 +1,5 @@
 import React from 'react'
-import { errorHandlerDecorator } from '../src/ErrorHandler'
+import { errorHandlerDecorator } from 'react-error-boundaries'
 
 class ProductCategoryRow extends React.PureComponent {
   render() {

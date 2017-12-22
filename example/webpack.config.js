@@ -2,16 +2,18 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlwebpackPlugin = require('html-webpack-plugin');
+const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 
 const SRC_PATH = path.resolve(__dirname, 'src');
-const BUILD_PATH = path.resolve(__dirname, 'dist');
-const EXAMPLE_PATH = path.resolve(__dirname, 'example');
+const BUILD_PATH = path.resolve(__dirname, 'build');
 
 module.exports = {
     // Source Maps("source-map|cheap-module-source-map|eval-source-map|cheap-module-eval-source-map")
-    devtool: 'source-map',
+    devtool: 'cheap-module-source-map',
     entry: {
-        index: path.resolve(SRC_PATH, 'ErrorHandler.js')
+        webpack: ['webpack-dev-server/client?http://0.0.0.0:8080',
+				  'webpack/hot/only-dev-server'],
+        index: path.resolve(SRC_PATH, 'index.jsx')
     },
     output: {
         path: BUILD_PATH,
@@ -20,10 +22,6 @@ module.exports = {
     resolve: {
         extensions: ['.js', '.jsx']
     },
-    externals: {
-      'react': 'React',
-      'react-dom': 'ReactDOM'
-    },
     module: {
         rules: [
             {
@@ -31,19 +29,23 @@ module.exports = {
                 include: [
                     SRC_PATH
                 ],
+                exclude: /node_modules/,
                 loader: 'babel-loader'
             }
         ]
     },
     plugins: [
-        new webpack.optimize.UglifyJsPlugin({
-			compress: {
-				warnings: false
-            },
-            beautify: true,
-            comments: true,
-            mangle: false
+		new webpack.DefinePlugin({
+			'process.env': {
+				NODE_ENV: '"development"'
+			}
         }),
-        new webpack.BannerPlugin('Copyright © 2017 by Chyrain. All rights reserved.')
+        new OpenBrowserPlugin({url: ('http://localhost:8080')}),
+        new webpack.BannerPlugin('Copyright © 2017 by Chyrain. All rights reserved.'),
+        new HtmlwebpackPlugin({
+			template: path.resolve(__dirname, './index.html'),
+			filename: 'index.html',
+			inject: 'body'
+		})
     ]
 }
