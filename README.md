@@ -1,16 +1,22 @@
 # react-error-boundaries
 
-A reusable React error boundaries component.
-
 [![version](https://img.shields.io/npm/v/react-error-boundaries.svg?style=flat-square)](http://npm.im/react-popconfirm)
 [![downloads](https://img.shields.io/npm/dm/react-error-boundaries.svg?style=flat-square)](http://npm-stat.com/charts.html?package=react-popconfirm&from=2017-04-07)
 [![MIT License](https://img.shields.io/npm/l/react-error-boundaries.svg?style=flat-square)](http://opensource.org/licenses/MIT)
 
+A reusable React error boundaries component. Based on React 16.2.0.
+
 > Error boundaries are React components that catch JavaScript errors anywhere in their child component tree, log those errors, and display a fallback UI instead of the component tree that crashed. Error boundaries catch errors during rendering, in lifecycle methods, and in constructors of the whole tree below them.
+
+Effect picture:
 
 ![react-error-boundaries](https://raw.githubusercontent.com/Chyrain/MDPictures/master/res/react_error_boundaries.png)
 
-Based on React 16.2.0.
+## Install
+
+```s
+npm install react-error-boundaries
+```
 
 ## Usage
 
