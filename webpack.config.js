@@ -1,21 +1,26 @@
 // webpack.config.js
 const path = require('path');
 const webpack = require('webpack');
+const argv = require('yargs').argv;
 const HtmlwebpackPlugin = require('html-webpack-plugin');
 
 const SRC_PATH = path.resolve(__dirname, 'src');
 const BUILD_PATH = path.resolve(__dirname, 'dist');
 const EXAMPLE_PATH = path.resolve(__dirname, 'example');
 
+const libTarget = argv.define || 'commonjs';
+
 module.exports = {
     // Source Maps("source-map|cheap-module-source-map|eval-source-map|cheap-module-eval-source-map")
     devtool: 'source-map',
     entry: {
-        index: path.resolve(SRC_PATH, 'ErrorHandler.js')
+        index: path.resolve(SRC_PATH, 'index.js')
     },
     output: {
-        path: BUILD_PATH,
-        filename: '[name].js'
+        path: path.resolve(BUILD_PATH, libTarget),
+        filename: '[name].js',
+        libraryTarget: libTarget,
+        library: 'ReactErrorBoundaries'
     },
     resolve: {
         extensions: ['.js', '.jsx']

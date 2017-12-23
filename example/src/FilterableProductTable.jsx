@@ -1,6 +1,5 @@
 import React from 'react'
-import { errorHandlerDecorator } from 'react-error-boundaries'
-// import { errorHandlerDecorator } from '../../src/ErrorHandler'
+import { errorHandlerDecorator } from '../../dist/commonjs'
 
 class ProductCategoryRow extends React.PureComponent {
   render() {
@@ -99,7 +98,7 @@ function onError(error, errorInfo, props) {
   console.log('FilterableProductTable.onError:', error, errorInfo, props);
 }
 
-@errorHandlerDecorator // 类或者类中的函数才可以使用装饰器
+@errorHandlerDecorator // use ES7 decorator
 export default class FilterableProductTable extends React.PureComponent {
   constructor(props) {
     super(props);

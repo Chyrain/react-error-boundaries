@@ -2,8 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 import FilterableProductTable, { PRODUCTS } from './FilterableProductTable'
-import ErrorBoundary from 'react-error-boundaries'
-// import ErrorBoundary from '../../src/ErrorHandler'
+import ErrorBoundary from '../../dist/commonjs'
 
 const App = () => {
     return (

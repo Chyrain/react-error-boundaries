@@ -38,5 +38,10 @@ jspm_packages
 
 .DS_STORE
 *.log
+example
 examples
 build
+src
+LICENSE
+webpack.*.js
+*.js.map

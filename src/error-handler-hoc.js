@@ -4,7 +4,7 @@ function withErrorHandler (FallbackComponent, Component) {
     class WithErrorHandler extends React.PureComponent {
         constructor () {
             super()
-
+            this.closeErrorModal = this.closeErrorModal.bind(this);
             // Construct the initial state
             this.state = {
                 hasError: false,
@@ -13,7 +13,7 @@ function withErrorHandler (FallbackComponent, Component) {
             }
         }
 
-        closeErrorModal = () => {
+        closeErrorModal() {
             this.setState({ hasError: false });
         }
 

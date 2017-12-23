@@ -1,19 +1,44 @@
 {
+	"env": {
+		"commonjs": {
+			"presets": [
+				"es2015",
+				"react",
+				"stage-3"
+			],
+			"plugins": [
+				"transform-decorators-legacy"
+			]
+		},
+		"es": {
+			"presets": [
+				"es2015-rollup",
+				"react",
+				"stage-3"
+			],
+			"plugins": [
+				"transform-runtime",
+				"transform-decorators-legacy"
+			]
+		},
+		"production": {
+			"comments":false,
+			"presets": [
+				"es2015",
+				"react",
+				"stage-3"
+			],
+			"plugins": [
+				"transform-runtime",
+				"transform-decorators-legacy"
+			]
+		}
+	},
 	"presets": [
-		"stage-3",
 		"react",
-		[
-			"env",
-			{
-				"targets": {
-					"browsers": ["last 2 versions", "ie >= 10"]
-				}
-			}
-		]
+		"stage-3"
 	],
 	"plugins": [
-		"transform-decorators-legacy",
-		"transform-class-properties",
-		"transform-object-rest-spread"
+		"transform-decorators-legacy"
 	]
 }
