@@ -54,7 +54,12 @@ const App = () => {
 ReactDOM.render(<App />, document.getElementById('root'));
 ```
 
-And you can handle errors by providing an onError callback:
+And you can handle errors by providing an onError callback, and customize the FallbackComponent by providing a Component.
+
+> FallbackComponent will receive props:
+  - closeErrorModal: Function, call when click close button
+  - error: An error that has been thrown.
+  - errorInfo: An object with componentStack key. The property has information about component stack during thrown error.
 
 ```js
 // import first
@@ -69,7 +74,7 @@ function onError(error, errorInfo, props) {
 
 const App = () => {
     return (
-    <ErrorBoundary onError={onError}>
+    <ErrorBoundary onError={onError} FallbackComponent={YourFallbackView}>
         <YourComponents />
     </ErrorBoundary>
     );
@@ -110,7 +115,7 @@ function onError(error, errorInfo, props) {
 ReactDOM.render(<YourComponent onError={onError} />, document.getElementById('root'));
 ```
 
-In HOC way, you can also customize the FallbackComponent for better appearance:
+You can also customize the FallbackComponent in HOC way:
 
 ```js
 // import first, FallbackView is default Fallback Component
