@@ -31,10 +31,10 @@ import ErrorBoundary from 'react-error-boundaries'
 
 Intro:
 
-- ErrorBoundary: React container component to handler error
-- withErrorHandler: React HOC to customize the errorCallback function and FallbackComponent
-- errorHandlerDecorator: By this, you can use error boundary as ES7 decorator
-- FallbackView: The default fallback component, show when error occur. props: { error: Objec, errorInfo: Object, closeErrorModal: Function }
+- **ErrorBoundary**: React container component to handler error
+- **withErrorHandler**: React HOC to customize the errorCallback function and FallbackComponent
+- **errorHandlerDecorator**: By this, you can use error boundary as ES7 decorator
+- **FallbackView**: The default fallback component, show when error occur. props: { error: Objec, errorInfo: Object, closeErrorModal: Function }
 
 Use as a component container:
 
