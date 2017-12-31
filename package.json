@@ -1,6 +1,6 @@
 {
   "name": "react-error-boundaries",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "React HOC for error boundaries.",
   "main": "dist/commonjs/index.js",
   "scripts": {
@@ -32,10 +32,9 @@
   },
   "homepage": "https://github.com/Chyrain/react-error-boundaries#readme",
   "license": "MIT",
-  "dependencies": {
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "react-error-boundaries": "^1.0.6"
+  "peerDevDependencies": {
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
@@ -50,6 +49,8 @@
     "html-webpack-plugin": "^2.30.1",
     "open-browser-webpack-plugin": "0.0.5",
     "webpack": "^3.10.0",
-    "webpack-dev-server": "^2.9.7"
+    "webpack-dev-server": "^2.9.7",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
   }
 }
