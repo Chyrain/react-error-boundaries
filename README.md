@@ -34,7 +34,7 @@ Intro:
 - **ErrorBoundary**: React container component to handler error
 - **withErrorHandler**: React HOC to customize the errorCallback function and FallbackComponent
 - **errorHandlerDecorator**: By this, you can use error boundary as ES7 decorator
-- **FallbackView**: The default fallback component, show when error occur. props: `{ error: Objec, errorInfo: Object, closeErrorModal: Function }`
+- **FallbackView**: The default fallback component, show when error occur. props: `{ error: Objec, errorInfo: Object, closeErrorModal: Function }`(Unable in production, if import you will got undefined)
 
 Use as a component container:
 
@@ -156,6 +156,35 @@ Input `i` in search input and error will throw.
 # run example, auto open browser and enable hot loader
 npm install
 npm start
+```
+
+## How to disable it
+
+To enable it by set `process.env.NODE_ENV` or `process.env.ERROR_ENV` as `development`, so you can disable it by setting `process.env.NODE_ENV` to be `production` and not set `process.env.ERROR_ENV` as `development`.
+
+With webpack by setting like this to disable it:
+
+```js
+plugins: [
+  new webpack.DefinePlugin({
+    "process.env": {
+      NODE_ENV: '"production"'
+    }
+  })
+]
+```
+
+With config like this to enable it even in NODE_ENV is production:
+
+```js
+plugins: [
+  new webpack.DefinePlugin({
+    "process.env": {
+      NODE_ENV: '"production"',
+      ERROR_ENV: '"development"'
+    }
+  })
+]
 ```
 
 ## License
