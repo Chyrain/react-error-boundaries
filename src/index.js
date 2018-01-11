@@ -28,19 +28,33 @@ if (
   exports.errorHandlerDecorator = withErrorHandler(FallbackView);
 } else {
   // production or other env (not development)
-  // NOOP HOC
-  const withErrorHandler = curry((FallbackComponent, Component) => {
-    const WithErrorHandler = props => {
-      return <Component {...props} />;
-    };
-    return WithErrorHandler;
-  });
   // NOOP ErrorBoundary
   class ErrorBoundary extends React.Component {
+    componentDidCatch(error, info) {
+      const { onError, ..._props } = this.props;
+      if (typeof onError === "function") {
+        try {
+          onError.call(this, error, info, _props);
+        } catch (e) {}
+      }
+    }
+
     render() {
       return this.props.children;
     }
   }
+  // NOOP HOC
+  const withErrorHandler = curry((FallbackComponent, Component) => {
+    const WithErrorHandler = props => {
+      const { onError } = props;
+      return (
+        <ErrorBoundary FallbackComponent={FallbackComponent} onError={onError}>
+          <Component {...props} />
+        </ErrorBoundary>
+      );
+    };
+    return WithErrorHandler;
+  });
   __ErrorBoundary = ErrorBoundary;
   exports.ErrorBoundary = ErrorBoundary;
   exports.withErrorHandler = withErrorHandler;

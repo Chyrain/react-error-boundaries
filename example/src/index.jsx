@@ -13,7 +13,7 @@ const App = () => {
 }
 
 function onError(error, errorInfo, props) {
-    console.log('App.onError:', error, errorInfo, props);
+    console.warn('App.onError:', error, errorInfo, props);
 }
 
 ReactDOM.render(<App />, document.getElementById('root'));
