@@ -98,7 +98,7 @@ function onError(error, errorInfo, props) {
   console.log('FilterableProductTable.onError:', error, errorInfo, props);
 }
 
-@errorHandlerDecorator // use ES7 decorator
+// @errorHandlerDecorator // use ES7 decorator
 export default class FilterableProductTable extends React.PureComponent {
   constructor(props) {
     super(props);
